@@ -25,8 +25,15 @@ form="""
     </body>
 </html>
 """
+<form>
+    
+    Rotate by:
+    <input type="text" name="rot" value="0">
+    <input type="textarea" name="text">
+    <input type="submit" value="Submit">
+</form>
 @app.route("/")
 def index():
-    return "Hello World"
+    return form
 
 app.run()
