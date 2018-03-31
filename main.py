@@ -8,19 +8,19 @@ form="""
 <html>
     <head>
         <style>
-            form{
+            form{{
                 background-color: #eee;
                 padding: 20px;
                 margin: 0 auto;
                 width: 540px;
                 font: 16px sans-serif;
                 border-radius: 10px;
-            }
-            textarea{
+            }}
+            textarea{{
                 margin: 10px 0;
                 width: 540px;
                 height: 120px;
-            }
+            }}
         </style>
     </head>
     <body>
@@ -28,7 +28,7 @@ form="""
             <label>Rotate by:
                 <input type="text" name="rot" value="0" />
             </label>
-            <textarea name="text"></textarea>
+            <textarea name="text">{0}</textarea>
             <input type="submit" value="Submit" />
         </form>
     </body>
@@ -37,13 +37,13 @@ form="""
 
 @app.route("/")
 def index():
-    return form
+    return form.format("")
 
 @app.route("/encrypt", methods=['POST'])
 def encrypt():
     rotate=int(request.form['rot'])
     message=request.form['text']
     new_message=rotate_string(message,rotate)
-    return "<h1>"+new_message+"</h1>"
+    return form.format(new_message)
 
 app.run()
